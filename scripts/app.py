@@ -3,10 +3,13 @@ import sys
 import duckdb
 import streamlit as st
 
+# Add both root and scripts directory to sys.path
+sys.path.append(os.getcwd())
 sys.path.append(os.path.join(os.getcwd(), "scripts"))
+
 try:
     from live_scraper import scrape_and_store
-except ImportError:
+except ModuleNotFoundError:
     from scripts.live_scraper import scrape_and_store
 
 st.set_page_config(page_title="E-Commerce Live Pipeline Dashboard", layout="wide")
